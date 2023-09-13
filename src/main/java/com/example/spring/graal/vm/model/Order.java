@@ -11,20 +11,21 @@ import java.util.Objects;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Long orderId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Column(name = "order_date")
     private Date orderDate;
+
+    @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
-
-    // getters and setters
-
 
     public Order() {
 

@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Publisher implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "publisher_id")
     private Integer id;
 

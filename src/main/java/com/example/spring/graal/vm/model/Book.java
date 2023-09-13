@@ -13,6 +13,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "book_id")
     private Integer id;
 
     @NotBlank(message = "Title should not be empty")
@@ -20,6 +21,7 @@ public class Book {
     private String title;
 
     @NotBlank(message = "ISBN should not be empty")
+    @Column(name="isbn")
     private String isbn;
 
     @Column(name = "publication_date")

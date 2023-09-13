@@ -9,6 +9,7 @@ import java.util.Objects;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_item_id")
     private Long orderItemId;
 
     @ManyToOne
@@ -19,7 +20,10 @@ public class OrderItem {
     @JoinColumn(name = "book_id")
     private Book book;
 
+    @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "price")
     private BigDecimal price;
 
     public OrderItem() {
