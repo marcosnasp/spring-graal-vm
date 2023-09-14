@@ -18,6 +18,7 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "order_date")
     private Date orderDate;
 

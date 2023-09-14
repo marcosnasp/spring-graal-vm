@@ -11,18 +11,11 @@ INSERT INTO Publisher (name, address, phone_number) VALUES
     ('New Horizon Publishers', '789 Oak St, Villagetown', '+1 (555) 876-5432');
 
 -- Insert books
-INSERT INTO Book (title, isbn, publication_date, price, publisher_id) VALUES
-    ('The Mystery of the Lost Key', '978-1234567890', '2022-03-15', 19.99, 1),
-    ('A Tale of Two Cities', '978-0140437018', '1859-01-01', 14.99, 2),
-    ('The Secret Garden', '978-0064401883', '1911-11-01', 12.99, 2),
-    ('The Art of Programming', '978-0201633610', '1997-04-01', 29.99, 3);
-
--- Insert book authors (many-to-many relationship)
-INSERT INTO BookAuthor (book_id, author_id) VALUES
-    (1, 1),
-    (2, 2),
-    (3, 2),
-    (4, 3);
+INSERT INTO Book (title, isbn, publication_date, price, publisher_id, author_id) VALUES
+    ('The Mystery of the Lost Key', '978-123456789', '2022-03-15', 19.99, 1, 1),
+    ('A Tale of Two Cities', '978-014043701', '1859-01-01', 14.99, 2, 2),
+    ('The Secret Garden', '978-006440188', '1911-11-01', 12.99, 2, 2),
+    ('The Art of Programming', '978-020163361', '1997-04-01', 29.99, 3, 3);
 
 -- Insert customers
 INSERT INTO Customer (first_name, last_name, email, address, phone_number) VALUES
@@ -31,7 +24,7 @@ INSERT INTO Customer (first_name, last_name, email, address, phone_number) VALUE
     ('Charlie', 'Brown', 'charlie@example.com', '123 Elm St, Downtown', '+1 (555) 555-6666');
 
 -- Insert orders
-INSERT INTO Order (customer_id, order_date, total_amount) VALUES
+INSERT INTO `Order` (customer_id, order_date, total_amount) VALUES
     (1, '2022-04-10 14:30:00', 39.98),
     (2, '2022-05-05 11:45:00', 44.97),
     (3, '2022-06-20 09:15:00', 19.99);
