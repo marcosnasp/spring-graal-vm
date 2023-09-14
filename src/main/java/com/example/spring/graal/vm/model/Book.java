@@ -16,7 +16,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private Integer id;
+    private Long id;
 
     @NotBlank(message = "Title should not be empty")
     @Column(name = "title")
@@ -50,11 +50,11 @@ public class Book {
     public Book() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -13,8 +13,8 @@ public class OrderItem {
     private Long orderItemId;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "order_costumer_id")
+    private OrderCostumer orderCostumer;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -37,12 +37,12 @@ public class OrderItem {
         this.orderItemId = orderItemId;
     }
 
-    public Order getOrder() {
-        return order;
+    public OrderCostumer getOrder() {
+        return orderCostumer;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrder(OrderCostumer orderCostumer) {
+        this.orderCostumer = orderCostumer;
     }
 
     public Book getBook() {
@@ -74,11 +74,11 @@ public class OrderItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItem orderItem = (OrderItem) o;
-        return quantity == orderItem.quantity && Objects.equals(orderItemId, orderItem.orderItemId) && Objects.equals(order, orderItem.order) && Objects.equals(book, orderItem.book) && Objects.equals(price, orderItem.price);
+        return quantity == orderItem.quantity && Objects.equals(orderItemId, orderItem.orderItemId) && Objects.equals(orderCostumer, orderItem.orderCostumer) && Objects.equals(book, orderItem.book) && Objects.equals(price, orderItem.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderItemId, order, book, quantity, price);
+        return Objects.hash(orderItemId, orderCostumer, book, quantity, price);
     }
 }

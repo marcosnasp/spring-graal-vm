@@ -24,13 +24,13 @@ INSERT INTO Customer (first_name, last_name, email, address, phone_number) VALUE
     ('Charlie', 'Brown', 'charlie@example.com', '123 Elm St, Downtown', '+1 (555) 555-6666');
 
 -- Insert orders
-INSERT INTO `Order` (customer_id, order_date, total_amount) VALUES
+INSERT INTO OrderCostumer (customer_id, order_date, total_amount) VALUES
     (1, '2022-04-10 14:30:00', 39.98),
     (2, '2022-05-05 11:45:00', 44.97),
     (3, '2022-06-20 09:15:00', 19.99);
 
 -- Insert order items
-INSERT INTO OrderItem (order_id, book_id, quantity, price) VALUES
+INSERT INTO OrderItem (order_costumer_id, book_id, quantity, price) VALUES
     (1, 1, 2, 39.98),
     (2, 2, 3, 44.97),
     (3, 4, 1, 19.99);

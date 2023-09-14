@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Order {
+public class OrderCostumer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private Long orderId;
+    @Column(name = "order_costumer_id")
+    private Long orderCostumerId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -25,19 +25,19 @@ public class Order {
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "orderCostumer")
     private List<OrderItem> orderItems;
 
-    public Order() {
+    public OrderCostumer() {
 
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getOrderCostumerId() {
+        return orderCostumerId;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrderCostumerId(Long orderCostumerId) {
+        this.orderCostumerId = orderCostumerId;
     }
 
     public Customer getCustomer() {
@@ -76,12 +76,12 @@ public class Order {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Objects.equals(orderId, order.orderId) && Objects.equals(customer, order.customer) && Objects.equals(orderDate, order.orderDate) && Objects.equals(totalAmount, order.totalAmount) && Objects.equals(orderItems, order.orderItems);
+        OrderCostumer orderCostumer = (OrderCostumer) o;
+        return Objects.equals(orderCostumerId, orderCostumer.orderCostumerId) && Objects.equals(customer, orderCostumer.customer) && Objects.equals(orderDate, orderCostumer.orderDate) && Objects.equals(totalAmount, orderCostumer.totalAmount) && Objects.equals(orderItems, orderCostumer.orderItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, customer, orderDate, totalAmount, orderItems);
+        return Objects.hash(orderCostumerId, customer, orderDate, totalAmount, orderItems);
     }
 }
