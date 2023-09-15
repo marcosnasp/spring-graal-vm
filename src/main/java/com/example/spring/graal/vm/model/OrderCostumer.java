@@ -12,7 +12,7 @@ public class OrderCostumer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_costumer_id")
-    private Long orderCostumerId;
+    private Integer orderCostumerId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -32,11 +32,11 @@ public class OrderCostumer {
 
     }
 
-    public Long getOrderCostumerId() {
+    public Integer getOrderCostumerId() {
         return orderCostumerId;
     }
 
-    public void setOrderCostumerId(Long orderCostumerId) {
+    public void setOrderCostumerId(Integer orderCostumerId) {
         this.orderCostumerId = orderCostumerId;
     }
 
@@ -76,12 +76,12 @@ public class OrderCostumer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderCostumer orderCostumer = (OrderCostumer) o;
-        return Objects.equals(orderCostumerId, orderCostumer.orderCostumerId) && Objects.equals(customer, orderCostumer.customer) && Objects.equals(orderDate, orderCostumer.orderDate) && Objects.equals(totalAmount, orderCostumer.totalAmount) && Objects.equals(orderItems, orderCostumer.orderItems);
+        OrderCostumer that = (OrderCostumer) o;
+        return Objects.equals(orderCostumerId, that.orderCostumerId) && Objects.equals(customer, that.customer) && Objects.equals(orderDate, that.orderDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderCostumerId, customer, orderDate, totalAmount, orderItems);
+        return Objects.hash(orderCostumerId, customer, orderDate);
     }
 }

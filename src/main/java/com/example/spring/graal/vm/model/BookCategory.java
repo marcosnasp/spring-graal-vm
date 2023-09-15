@@ -9,7 +9,8 @@ public class BookCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "book_category_id")
+    private Integer id;
 
     @ManyToOne
     private Book book;
@@ -20,11 +21,11 @@ public class BookCategory {
     public BookCategory() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
