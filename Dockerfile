@@ -1,6 +1,6 @@
 FROM eclipse-temurin:20.0.2_9-jdk-jammy as spring-builder
 RUN addgroup spring; adduser  --ingroup spring --disabled-password spring
-USER demo
+USER spring
 
 WORKDIR /app
 

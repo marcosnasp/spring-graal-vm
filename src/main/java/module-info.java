@@ -8,11 +8,12 @@ module com.example.spring.graal.vm {
     requires spring.boot.autoconfigure;
     requires jakarta.persistence;
     requires jakarta.validation;
-    requires java.naming;
-    requires java.sql;
     requires org.hibernate.orm.core;
 
-    opens com.example.spring.graal.vm.model to org.hibernate.orm.core, jakarta.validation;
-
-    //exports com.example.spring.graal.vm;
+    opens com.example.spring.graal.vm;
+    opens com.example.spring.graal.vm.model;
+    opens com.example.spring.graal.vm.exceptions;
+    opens com.example.spring.graal.vm.controller;
+    opens com.example.spring.graal.vm.repository;
+    opens com.example.spring.graal.vm.services;
 }
