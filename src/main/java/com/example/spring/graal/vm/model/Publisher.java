@@ -70,11 +70,11 @@ public class Publisher implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Publisher publisher = (Publisher) o;
-        return Objects.equals(id, publisher.id) && Objects.equals(name, publisher.name) && Objects.equals(address, publisher.address) && Objects.equals(phoneNumber, publisher.phoneNumber);
+        return Objects.equals(id, publisher.id) && Objects.equals(name, publisher.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, address, phoneNumber);
+        return Objects.hash(id, name);
     }
 }

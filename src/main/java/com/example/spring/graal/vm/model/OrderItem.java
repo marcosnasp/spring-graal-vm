@@ -10,7 +10,7 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
-    private Long orderItemId;
+    private Integer orderItemId;
 
     @ManyToOne
     @JoinColumn(name = "order_costumer_id")
@@ -29,11 +29,11 @@ public class OrderItem {
     public OrderItem() {
     }
 
-    public Long getOrderItemId() {
+    public Integer getOrderItemId() {
         return orderItemId;
     }
 
-    public void setOrderItemId(Long orderItemId) {
+    public void setOrderItemId(Integer orderItemId) {
         this.orderItemId = orderItemId;
     }
 
@@ -74,11 +74,11 @@ public class OrderItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItem orderItem = (OrderItem) o;
-        return quantity == orderItem.quantity && Objects.equals(orderItemId, orderItem.orderItemId) && Objects.equals(orderCostumer, orderItem.orderCostumer) && Objects.equals(book, orderItem.book) && Objects.equals(price, orderItem.price);
+        return Objects.equals(orderItemId, orderItem.orderItemId) && Objects.equals(orderCostumer, orderItem.orderCostumer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderItemId, orderCostumer, book, quantity, price);
+        return Objects.hash(orderItemId, orderCostumer);
     }
 }

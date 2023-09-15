@@ -16,7 +16,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Title should not be empty")
     @Column(name = "title")
@@ -50,11 +50,11 @@ public class Book {
     public Book() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -111,11 +111,11 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(isbn, book.isbn) && Objects.equals(publicationDate, book.publicationDate) && Objects.equals(price, book.price) && Objects.equals(publisher, book.publisher) && Objects.equals(authors, book.authors);
+        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(isbn, book.isbn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, isbn, publicationDate, price, publisher, authors);
+        return Objects.hash(id, title, isbn);
     }
 }
