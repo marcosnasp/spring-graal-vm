@@ -4,6 +4,7 @@ module com.example.spring.graal.vm {
     requires spring.web;
     requires spring.boot;
     requires spring.context;
+    requires spring.core;
     requires spring.data.jpa;
     requires spring.boot.autoconfigure;
     requires jakarta.persistence;

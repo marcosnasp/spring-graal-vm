@@ -3,11 +3,13 @@ package com.example.spring.graal.vm.controller;
 import com.example.spring.graal.vm.model.Author;
 import com.example.spring.graal.vm.services.AuthorService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/v1/api")
 public class AuthorController {
 
     private final AuthorService authorService;

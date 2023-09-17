@@ -39,6 +39,9 @@ public class Book {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
+    @ManyToOne
+    private BookCategory bookCategory;
+
     @ManyToMany
     @JoinTable(
             name = "BookAuthor",
