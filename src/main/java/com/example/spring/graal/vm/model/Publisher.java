@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,6 +30,9 @@ public class Publisher implements Serializable {
     @Column(name = "phone_number")
     @Size(max = 20)
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> books;
 
     public Publisher() {
     }
@@ -63,6 +67,14 @@ public class Publisher implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override

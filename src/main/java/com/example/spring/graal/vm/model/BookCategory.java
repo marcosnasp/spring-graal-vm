@@ -12,10 +12,10 @@ public class BookCategory {
     @Column(name = "book_category_id")
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Book.class)
     private Book book;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Category.class)
     private Category category;
 
     public BookCategory() {

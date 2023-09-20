@@ -2,6 +2,8 @@ package com.example.spring.graal.vm.services;
 
 import com.example.spring.graal.vm.model.Author;
 import com.example.spring.graal.vm.repository.AuthorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public List<Author> findAll() {
-        return authorRepository.findAll();
+    public Page<Author> findAll(Pageable pageable) {
+        return authorRepository.findAll(pageable);
     }
 
 }
