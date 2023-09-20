@@ -34,3 +34,12 @@ INSERT INTO OrderItem (order_costumer_id, book_id, quantity, price) VALUES
     (1, 1, 2, 39.98),
     (2, 2, 3, 44.97),
     (3, 4, 1, 19.99);
+
+INSERT INTO Category (name) VALUES ('Mystery'),
+    ('Adventure stories'), ('Crime'),
+    ('Historical fiction'), ('Horror'),
+    ('Humour and Satire'),
+    ('Poetry'),
+    ('Thrillers'),
+    ('War');
+
