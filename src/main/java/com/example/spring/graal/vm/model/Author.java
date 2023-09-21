@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(schema = "public", name = "author")
 public class Author implements Serializable {
 
     @Id

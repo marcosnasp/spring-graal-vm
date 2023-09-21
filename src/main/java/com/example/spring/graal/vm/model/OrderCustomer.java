@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class OrderCostumer {
+@Table(schema = "public", name = "order_customer")
+public class OrderCustomer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_costumer_id")
-    private Integer orderCostumerId;
+    @Column(name = "order_customer_id")
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -25,19 +26,19 @@ public class OrderCostumer {
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
-    @OneToMany(mappedBy = "orderCostumer")
+    @OneToMany(mappedBy = "orderCustomer")
     private List<OrderItem> orderItems;
 
-    public OrderCostumer() {
+    public OrderCustomer() {
 
     }
 
-    public Integer getOrderCostumerId() {
-        return orderCostumerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderCostumerId(Integer orderCostumerId) {
-        this.orderCostumerId = orderCostumerId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Customer getCustomer() {
@@ -76,12 +77,12 @@ public class OrderCostumer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderCostumer that = (OrderCostumer) o;
-        return Objects.equals(orderCostumerId, that.orderCostumerId) && Objects.equals(customer, that.customer) && Objects.equals(orderDate, that.orderDate);
+        OrderCustomer that = (OrderCustomer) o;
+        return Objects.equals(id, that.id) && Objects.equals(customer, that.customer) && Objects.equals(orderDate, that.orderDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderCostumerId, customer, orderDate);
+        return Objects.hash(id, customer, orderDate);
     }
 }

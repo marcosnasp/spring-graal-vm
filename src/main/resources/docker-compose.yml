@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:16.0-bullseye
+    container_name: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=bookstore
+      - POSTGRES_PASSWORD=bookstorepass
+      - POSTGRES_USER=bookstoreuser
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - TZ=GMT-3
+    volumes:
+      - "./data:/var/lib/postgresql/data"
+    restart: always
+networks:
+  postgres:
+    driver: bridge

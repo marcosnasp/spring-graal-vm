@@ -7,16 +7,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CategoryService {
+public class BookCategoryService {
 
     private final BookCategoryRepository bookCategoryRepository;
 
-    public CategoryService(BookCategoryRepository bookCategoryRepository) {
+    public BookCategoryService(BookCategoryRepository bookCategoryRepository) {
         this.bookCategoryRepository = bookCategoryRepository;
     }
 
-    public Page<BookCategory> findAll(Pageable page) {
-        return bookCategoryRepository.findAll(page);
+    public Page<BookCategory> findAll(Pageable pageable) {
+        return bookCategoryRepository.findAll(pageable);
     }
-
 }

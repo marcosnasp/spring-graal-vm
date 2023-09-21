@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(schema = "public", name = "book")
 public class Book {
 
     @Id
@@ -23,7 +24,7 @@ public class Book {
     private String title;
 
     @NotBlank(message = "ISBN should not be empty")
-    @Column(name="isbn")
+    @Column(name = "isbn")
     private String isbn;
 
     @Column(name = "publication_date")
@@ -32,14 +33,15 @@ public class Book {
 
     @Column(name = "price")
     @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(integer=3, fraction=2)
+    @Digits(integer = 3, fraction = 2)
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Publisher.class)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
     @ManyToOne
+    @JoinColumn(name = "book_category_id")
     private BookCategory bookCategory;
 
     @ManyToMany
@@ -99,6 +101,14 @@ public class Book {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public BookCategory getBookCategory() {
+        return bookCategory;
+    }
+
+    public void setBookCategory(BookCategory bookCategory) {
+        this.bookCategory = bookCategory;
     }
 
     public List<Author> getAuthors() {

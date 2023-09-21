@@ -6,17 +6,18 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+@Table(schema = "public", name = "order_item")
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
-    private Integer orderItemId;
+    private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "order_costumer_id")
-    private OrderCostumer orderCostumer;
+    @JoinColumn(name = "order_customer_id")
+    private OrderCustomer orderCustomer;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Book.class)
     @JoinColumn(name = "book_id")
     private Book book;
 
@@ -29,20 +30,20 @@ public class OrderItem {
     public OrderItem() {
     }
 
-    public Integer getOrderItemId() {
-        return orderItemId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderItemId(Integer orderItemId) {
-        this.orderItemId = orderItemId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public OrderCostumer getOrder() {
-        return orderCostumer;
+    public OrderCustomer getOrder() {
+        return orderCustomer;
     }
 
-    public void setOrder(OrderCostumer orderCostumer) {
-        this.orderCostumer = orderCostumer;
+    public void setOrder(OrderCustomer orderCustomer) {
+        this.orderCustomer = orderCustomer;
     }
 
     public Book getBook() {
@@ -74,11 +75,11 @@ public class OrderItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItem orderItem = (OrderItem) o;
-        return Objects.equals(orderItemId, orderItem.orderItemId) && Objects.equals(orderCostumer, orderItem.orderCostumer);
+        return Objects.equals(id, orderItem.id) && Objects.equals(orderCustomer, orderItem.orderCustomer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderItemId, orderCostumer);
+        return Objects.hash(id, orderCustomer);
     }
 }

@@ -2,9 +2,11 @@ package com.example.spring.graal.vm.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(schema = "public", name = "book_category")
 public class BookCategory {
 
     @Id
@@ -12,11 +14,11 @@ public class BookCategory {
     @Column(name = "book_category_id")
     private Integer id;
 
-    @ManyToOne(targetEntity = Book.class)
-    private Book book;
+    @Column(name = "name")
+    private String name;
 
-    @ManyToOne(targetEntity = Category.class)
-    private Category category;
+    @OneToMany(mappedBy = "bookCategory")
+    private List<Book> book;
 
     public BookCategory() {
     }
@@ -29,20 +31,20 @@ public class BookCategory {
         this.id = id;
     }
 
-    public Book getBook() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Book> getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(List<Book> book) {
         this.book = book;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     @Override
@@ -50,11 +52,11 @@ public class BookCategory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookCategory that = (BookCategory) o;
-        return Objects.equals(id, that.id) && Objects.equals(book, that.book) && Objects.equals(category, that.category);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(book, that.book);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, book, category);
+        return Objects.hash(id, name, book);
     }
 }

@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(schema = "public", name = "customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private Integer customerId;
+    private Integer id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -28,17 +29,17 @@ public class Customer {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customer")
-    private List<OrderCostumer> orderCostumers;
+    private List<OrderCustomer> orderCustomers;
 
     public Customer() {
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -81,12 +82,12 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<OrderCostumer> getOrders() {
-        return orderCostumers;
+    public List<OrderCustomer> getOrders() {
+        return orderCustomers;
     }
 
-    public void setOrders(List<OrderCostumer> orderCostumers) {
-        this.orderCostumers = orderCostumers;
+    public void setOrders(List<OrderCustomer> orderCustomers) {
+        this.orderCustomers = orderCustomers;
     }
 
     @Override
@@ -94,11 +95,11 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(customerId, customer.customerId) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(orderCostumers, customer.orderCostumers);
+        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(orderCustomers, customer.orderCustomers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customerId, firstName, lastName, email, address, phoneNumber, orderCostumers);
+        return Objects.hash(id, firstName, lastName, email, address, phoneNumber, orderCustomers);
     }
 }
