@@ -12,7 +12,7 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
       - TZ=GMT-3
     volumes:
-      - "./data:/var/lib/postgresql/data"
+      - "../../../../../../Docker_Volumes/Postgres/data:/var/lib/postgresql/data"
     restart: always
 networks:
   postgres:
