@@ -1,5 +1,6 @@
 package com.example.spring.graal.vm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,7 +19,8 @@ public class BookCategory {
     private String name;
 
     @OneToMany(mappedBy = "bookCategory")
-    private List<Book> book;
+    @JsonIgnoreProperties("bookCategory")
+    private List<Book> books;
 
     public BookCategory() {
     }
@@ -39,12 +41,12 @@ public class BookCategory {
         this.name = name;
     }
 
-    public List<Book> getBook() {
-        return book;
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public void setBook(List<Book> book) {
-        this.book = book;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override
@@ -52,11 +54,11 @@ public class BookCategory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookCategory that = (BookCategory) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(book, that.book);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(books, that.books);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, book);
+        return Objects.hash(id, name, books);
     }
 }

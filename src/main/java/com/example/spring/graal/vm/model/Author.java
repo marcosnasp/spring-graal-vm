@@ -1,5 +1,6 @@
 package com.example.spring.graal.vm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -33,6 +34,7 @@ public class Author implements Serializable {
     private String bio;
 
     @ManyToMany(mappedBy = "authors")
+    @JsonIgnoreProperties("authors")
     private List<Book> books;
 
     public Author() {

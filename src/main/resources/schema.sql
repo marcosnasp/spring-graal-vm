@@ -34,7 +34,7 @@ CREATE TABLE book_author (
     PRIMARY KEY (book_id, author_id)
 );
 
-CREATE TABLE Customer (
+CREATE TABLE customer (
     customer_id SERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE Customer (
     phone_number VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE OrderCostumer (
+CREATE TABLE order_costumer (
     order_costumer_id SERIAL PRIMARY KEY,
     customer_id INTEGER REFERENCES Customer(customer_id),
     order_date TIMESTAMP,
@@ -52,7 +52,7 @@ CREATE TABLE OrderCostumer (
 
 CREATE TABLE order_item (
     order_item_id SERIAL PRIMARY KEY,
-    order_costumer_id INTEGER REFERENCES OrderCostumer(order_costumer_id),
+    order_costumer_id INTEGER REFERENCES order_costumer(order_costumer_id),
     book_id INTEGER REFERENCES book(book_id),
     quantity INTEGER,
     price DECIMAL(10, 2)

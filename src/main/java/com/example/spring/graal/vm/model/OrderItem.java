@@ -1,5 +1,6 @@
 package com.example.spring.graal.vm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_customer_id")
+    @JsonIgnoreProperties("orderItems")
     private OrderCustomer orderCustomer;
 
     @ManyToOne(targetEntity = Book.class)

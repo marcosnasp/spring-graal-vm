@@ -1,5 +1,6 @@
 package com.example.spring.graal.vm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -27,6 +28,7 @@ public class OrderCustomer {
     private BigDecimal totalAmount;
 
     @OneToMany(mappedBy = "orderCustomer")
+    @JsonIgnoreProperties("orderCustomer")
     private List<OrderItem> orderItems;
 
     public OrderCustomer() {

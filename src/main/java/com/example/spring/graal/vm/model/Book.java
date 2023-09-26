@@ -1,5 +1,6 @@
 package com.example.spring.graal.vm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
@@ -36,20 +37,23 @@ public class Book {
     @Digits(integer = 3, fraction = 2)
     private BigDecimal price;
 
-    @ManyToOne(targetEntity = Publisher.class)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
+    @JsonIgnoreProperties("books")
     private Publisher publisher;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_category_id")
+    @JsonIgnoreProperties("books")
     private BookCategory bookCategory;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "BookAuthor",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )
+    @JsonIgnoreProperties("books")
     private List<Author> authors;
 
     public Book() {
