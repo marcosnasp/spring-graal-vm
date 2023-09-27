@@ -43,7 +43,7 @@ INSERT INTO order_customer (customer_id, order_date, total_amount) VALUES
     (3, '2022-06-20 09:15:00', 19.99);
 
 -- Insert order items
-INSERT INTO order_item (order_costumer_id, book_id, quantity, price) VALUES
+INSERT INTO order_item (order_customer_id, book_id, quantity, price) VALUES
     (1, 1, 2, 39.98),
     (2, 2, 3, 44.97),
     (3, 4, 1, 19.99);

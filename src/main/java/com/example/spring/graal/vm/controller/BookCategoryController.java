@@ -10,10 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/bookcategories")
+@RequestMapping("/api/bookcategories")
 public class BookCategoryController {
 
     private final BookCategoryService bookCategoryService;
@@ -22,7 +23,7 @@ public class BookCategoryController {
         this.bookCategoryService = bookCategoryService;
     }
 
-    @GetMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<Page<BookCategory>> findAll(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(bookCategoryService.findAll(pageable));
     }
