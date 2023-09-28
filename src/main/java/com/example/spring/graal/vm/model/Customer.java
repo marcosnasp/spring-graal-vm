@@ -30,7 +30,6 @@ public class Customer {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customer")
-    @JsonIgnoreProperties("publisher")
     private List<OrderCustomer> orderCustomers;
 
     public Customer() {

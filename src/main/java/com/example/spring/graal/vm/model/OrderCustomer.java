@@ -16,7 +16,7 @@ public class OrderCustomer {
     @Column(name = "order_customer_id")
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -27,7 +27,7 @@ public class OrderCustomer {
     @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
-    @OneToMany(mappedBy = "orderCustomer")
+    @OneToMany(mappedBy = "orderCustomer", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("orderCustomer")
     private List<OrderItem> orderItems;
 

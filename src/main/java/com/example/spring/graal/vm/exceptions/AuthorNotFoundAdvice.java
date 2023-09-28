@@ -15,4 +15,11 @@ public class AuthorNotFoundAdvice {
     String authorNotFound(AuthorNotFoundException ex) {
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(CustomerNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String customerNotFound(CustomerNotFoundException ex) {
+        return ex.getMessage();
+    }
 }
