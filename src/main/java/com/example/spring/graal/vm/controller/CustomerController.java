@@ -28,7 +28,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<Page<Customer>> findAll(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC)Pageable page) {
+    public ResponseEntity<Page<Customer>> findAll(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable page) {
         return ResponseEntity.status(HttpStatus.OK).body(customerService.findAll(page));
     }
 
