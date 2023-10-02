@@ -1,7 +1,7 @@
 package com.example.spring.graal.vm.controller;
 
+import com.example.spring.graal.vm.dto.PublisherDTO;
 import com.example.spring.graal.vm.exceptions.PublisherNotFoundException;
-import com.example.spring.graal.vm.model.Publisher;
 import com.example.spring.graal.vm.services.PublisherService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,17 +27,17 @@ public class PublisherController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<Page<Publisher>> findAll(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+    public ResponseEntity<Page<PublisherDTO>> findAll(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(publisherService.findAll(pageable));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<Publisher>> findById(@PathVariable("id") Integer id) {
-        Optional<Publisher> publisher = publisherService.findById(id);
+    public ResponseEntity<Optional<PublisherDTO>> findById(@PathVariable("id") Integer id) {
+        Optional<PublisherDTO> publisher = publisherService.findById(id);
         if (publisher.isEmpty()) {
             throw new PublisherNotFoundException(String.format("id-: %d", id));
         }
-        return ResponseEntity.status(HttpStatus.OK).body(publisherService.findById(id));
+        return ResponseEntity.status(HttpStatus.OK).body(publisher);
     }
 
 }

@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>20</java.version>
 		<blaze-persistence.version>1.6.9</blaze-persistence.version>
+		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -54,11 +55,10 @@
 			<artifactId>blaze-persistence-integration-spring-data-3.1</artifactId>
 			<version>${blaze-persistence.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
 		<dependency>
-			<groupId>org.modelmapper</groupId>
-			<artifactId>modelmapper</artifactId>
-			<version>3.1.1</version>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>

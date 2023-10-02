@@ -1,6 +1,7 @@
 package com.example.spring.graal.vm.services;
 
-import com.example.spring.graal.vm.model.Publisher;
+import com.example.spring.graal.vm.dto.PublisherDTO;
+import com.example.spring.graal.vm.dto.PublisherDTOMapper;
 import com.example.spring.graal.vm.repository.PublisherRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,17 +15,19 @@ import java.util.Optional;
 public class PublisherService {
 
     private final PublisherRepository publisherRepository;
+    private final PublisherDTOMapper publisherDTOMapper;
 
-    public PublisherService(PublisherRepository publisherRepository) {
+    public PublisherService(PublisherRepository publisherRepository, PublisherDTOMapper publisherDTOMapper) {
         this.publisherRepository = publisherRepository;
+        this.publisherDTOMapper = publisherDTOMapper;
     }
 
-    public Page<Publisher> findAll(Pageable pageable) {
-        return publisherRepository.findAll(pageable);
+    public Page<PublisherDTO> findAll(Pageable pageable) {
+        return publisherRepository.findAll(pageable).map(publisherDTOMapper);
     }
 
-    public Optional<Publisher> findById(Integer id) {
-        return publisherRepository.findById(id);
+    public Optional<PublisherDTO> findById(Integer id) {
+        return publisherRepository.findById(id).map(publisherDTOMapper);
     }
 
 }
