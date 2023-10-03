@@ -18,8 +18,8 @@ public class AuthorDTOMapper implements Function<Author, AuthorDTO> {
 
     @Override
     public AuthorDTO apply(Author author) {
-        List<BookDTO> booksDTO = author.getBooks().stream().map(book -> bookDTOMapper.apply(book)).collect(Collectors.toList());
+        List<BookDTO> books = author.getBooks().stream().map(bookDTOMapper).collect(Collectors.toList());
         return new AuthorDTO(author.getFirstName(), author.getLastName(), author.getBirthDate(), author.getBio(),
-                 booksDTO);
+                 books);
     }
 }

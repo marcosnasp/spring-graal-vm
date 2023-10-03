@@ -37,12 +37,12 @@ public class Book {
     @Digits(integer = 3, fraction = 2)
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
     @JsonIgnoreProperties("books")
     private Publisher publisher;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_category_id")
     @JsonIgnoreProperties("books")
     private BookCategory bookCategory;

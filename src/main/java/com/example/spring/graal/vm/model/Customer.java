@@ -1,6 +1,5 @@
 package com.example.spring.graal.vm.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -28,9 +27,6 @@ public class Customer {
 
     @Column(name = "phone_number")
     private String phoneNumber;
-
-    @OneToMany(mappedBy = "customer")
-    private List<OrderCustomer> orderCustomers;
 
     public Customer() {
     }
@@ -83,24 +79,16 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<OrderCustomer> getOrders() {
-        return orderCustomers;
-    }
-
-    public void setOrders(List<OrderCustomer> orderCustomers) {
-        this.orderCustomers = orderCustomers;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber) && Objects.equals(orderCustomers, customer.orderCustomers);
+        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(address, customer.address) && Objects.equals(phoneNumber, customer.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, address, phoneNumber, orderCustomers);
+        return Objects.hash(id, firstName, lastName, email, address, phoneNumber);
     }
 }

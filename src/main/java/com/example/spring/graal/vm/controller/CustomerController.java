@@ -1,8 +1,8 @@
 package com.example.spring.graal.vm.controller;
 
 
+import com.example.spring.graal.vm.dto.CustomerDTO;
 import com.example.spring.graal.vm.exceptions.CustomerNotFoundException;
-import com.example.spring.graal.vm.model.Customer;
 import com.example.spring.graal.vm.services.CustomerService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,13 +28,13 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<Page<Customer>> findAll(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable page) {
+    public ResponseEntity<Page<CustomerDTO>> findAll(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable page) {
         return ResponseEntity.status(HttpStatus.OK).body(customerService.findAll(page));
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<Customer>> findById(@PathVariable("id") Integer id) throws CustomerNotFoundException {
-        Optional<Customer> customer = customerService.findById(id);
+    public ResponseEntity<Optional<CustomerDTO>> findById(@PathVariable("id") Integer id) throws CustomerNotFoundException {
+        Optional<CustomerDTO> customer = customerService.findById(id);
         if (customer.isEmpty()) {
             throw new CustomerNotFoundException(String.format("id-: %d", id));
         } else {

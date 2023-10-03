@@ -1,6 +1,7 @@
 package com.example.spring.graal.vm.services;
 
-import com.example.spring.graal.vm.model.Customer;
+import com.example.spring.graal.vm.dto.CustomerDTO;
+import com.example.spring.graal.vm.dto.CustomerDTOMapper;
 import com.example.spring.graal.vm.repository.CustomerRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,17 +15,19 @@ import java.util.Optional;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final CustomerDTOMapper customerDTOMapper;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository, CustomerDTOMapper customerDTOMapper) {
         this.customerRepository = customerRepository;
+        this.customerDTOMapper = customerDTOMapper;
     }
 
-    public Page<Customer> findAll(Pageable page) {
-        return customerRepository.findAll(page);
+    public Page<CustomerDTO> findAll(Pageable page) {
+        return customerRepository.findAll(page).map(customerDTOMapper);
     }
 
-    public Optional<Customer> findById(Integer id) {
-        return customerRepository.findById(id);
+    public Optional<CustomerDTO> findById(Integer id) {
+        return customerRepository.findById(id).map(customerDTOMapper);
     }
 
 }

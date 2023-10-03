@@ -18,10 +18,6 @@ public class BookCategory {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "bookCategory")
-    @JsonIgnoreProperties("bookCategory")
-    private List<Book> books;
-
     public BookCategory() {
     }
 
@@ -41,24 +37,16 @@ public class BookCategory {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookCategory that = (BookCategory) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(books, that.books);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, books);
+        return Objects.hash(id, name);
     }
 }

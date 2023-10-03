@@ -1,7 +1,5 @@
 package com.example.spring.graal.vm.dto;
 
-import com.example.spring.graal.vm.model.Book;
-
 import java.util.Date;
 import java.util.List;
 

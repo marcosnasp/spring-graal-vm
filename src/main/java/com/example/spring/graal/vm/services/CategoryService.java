@@ -1,6 +1,7 @@
 package com.example.spring.graal.vm.services;
 
-import com.example.spring.graal.vm.model.BookCategory;
+import com.example.spring.graal.vm.dto.BookCategoryDTO;
+import com.example.spring.graal.vm.dto.BookCategoryDTOMapper;
 import com.example.spring.graal.vm.repository.BookCategoryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,17 +15,19 @@ import java.util.Optional;
 public class CategoryService {
 
     private final BookCategoryRepository bookCategoryRepository;
+    private final BookCategoryDTOMapper bookCategoryDTOMapper;
 
-    public CategoryService(BookCategoryRepository bookCategoryRepository) {
+    public CategoryService(BookCategoryRepository bookCategoryRepository, BookCategoryDTOMapper bookCategoryDTOMapper) {
         this.bookCategoryRepository = bookCategoryRepository;
+        this.bookCategoryDTOMapper = bookCategoryDTOMapper;
     }
 
-    public Page<BookCategory> findAll(Pageable page) {
-        return bookCategoryRepository.findAll(page);
+    public Page<BookCategoryDTO> findAll(Pageable page) {
+        return bookCategoryRepository.findAll(page).map(bookCategoryDTOMapper);
     }
 
-    public Optional<BookCategory> findById(Integer id) {
-        return bookCategoryRepository.findById(id);
+    public Optional<BookCategoryDTO> findById(Integer id) {
+        return bookCategoryRepository.findById(id).map(bookCategoryDTOMapper);
     }
 
 }

@@ -14,13 +14,32 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception exception, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), exception.getMessage(), request.getDescription(false));
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                request.getContextPath(),
+                exception.getMessage(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                LocalDateTime.now());
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(PublisherNotFoundException.class)
     public final ResponseEntity<ExceptionResponse> handlePublisherNotFoundException(PublisherNotFoundException publisherNotFoundException, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), publisherNotFoundException.getMessage(), request.getDescription(false));
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                request.getContextPath(),
+                publisherNotFoundException.getMessage(),
+                HttpStatus.NOT_FOUND.value(),
+                LocalDateTime.now());
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AuthorNotFoundException.class)
+    public final ResponseEntity<ExceptionResponse> handleAuthorNotFoundException(AuthorNotFoundException authorNotFoundException, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                request.getContextPath(),
+                authorNotFoundException.getMessage(),
+                HttpStatus.NOT_FOUND.value(),
+                LocalDateTime.now()
+        );
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 
